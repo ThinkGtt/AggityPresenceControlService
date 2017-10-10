@@ -1,0 +1,4 @@
+[submodule "pcsclib"]
+	path = pcsclib
+	url = https://aoller_developer@bitbucket.org/aoller_developer/pcsclib.git
+	branch = master
