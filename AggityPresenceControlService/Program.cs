@@ -25,7 +25,7 @@ namespace AggityPresenceControlService
                 Start(args);
 
                 Console.WriteLine("Press any key to stop...");
-                //LogManager.Logger.Info("Starting...");
+                LogManager.Logger.Info("Starting...");
                 //Console.ReadKey(true);
                 Thread.Sleep(120000);
 
