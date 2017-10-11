@@ -2,6 +2,7 @@
 using PCSCLib;
 using System;
 using System.ServiceProcess;
+using System.Threading;
 
 namespace AggityPresenceControlService
 {
@@ -24,7 +25,9 @@ namespace AggityPresenceControlService
                 Start(args);
 
                 Console.WriteLine("Press any key to stop...");
-                Console.ReadKey(true);
+                //LogManager.Logger.Info("Starting...");
+                //Console.ReadKey(true);
+                Thread.Sleep(120000);
 
                 Stop();
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -13,6 +14,6 @@ namespace AggityPresenceControlService
         public static string DATABASE_FILE { get; private set; } = ConfigurationManager.AppSettings["DATABASE_FILE"];
         public static string WEBSERVICE_URL { get; private set; } = ConfigurationManager.AppSettings["WEBSERVICE_URL"];
 
-        public static string TERMINAL_ID { get; private set; } = ConfigurationManager.AppSettings["TERMINAL_ID"];
+        public static string TERMINAL_ID { get; private set; } = ConfigurationManager.AppSettings["TERMINAL_ID"];        
     }
 }
