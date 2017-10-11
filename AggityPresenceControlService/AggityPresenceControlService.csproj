@@ -100,6 +100,7 @@
     <Compile Include="database\DatabaseManager.cs" />
     <Compile Include="database\IStorable.cs" />
     <Compile Include="database\PunchData.cs" />
+    <Compile Include="IPunchDataSend.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,6 +110,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AggityPresenceControlDataModel\AggityPresenceControlDataModel.csproj">
+      <Project>{213aaaae-67e7-4f06-8219-5f5616e50f1e}</Project>
+      <Name>AggityPresenceControlDataModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\pcsclib\PCSCLib\PCSCLib.csproj">
       <Project>{7c2501f8-3a35-4163-9c57-6b876b988c80}</Project>
       <Name>PCSCLib</Name>

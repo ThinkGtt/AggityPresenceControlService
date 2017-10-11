@@ -1,16 +1,17 @@
-﻿using SQLite.Net.Attributes;
+﻿using AggityPresenceControlDataModel;
+using SQLite.Net.Attributes;
 using System;
 
 namespace AggityPresenceControlService.Database
 {
-    public class PunchData : IStorable
+    public class PunchData : PunchDataBase, IStorable
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public override int Id { get; set; }
 
-        public string TerminalId { get; set; }        
-        public string CardUid { get; set; }
-        public DateTime Time
+        public override string TerminalId { get; set; }        
+        public override string CardUid { get; set; }
+        public override DateTime Time
         {
             get { return time; }
             set
