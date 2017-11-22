@@ -1,4 +1,5 @@
 ﻿using AggityPresenceControlDataModel;
+using AggityPresenceControlDataModel.Database;
 using SQLite.Net.Attributes;
 using System;
 

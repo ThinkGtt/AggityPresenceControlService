@@ -3,6 +3,7 @@ using PCSCLib;
 using System;
 using System.ServiceProcess;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace AggityPresenceControlService
 {
@@ -38,7 +39,7 @@ namespace AggityPresenceControlService
         {
             DatabaseManager dbm = new DatabaseManager();
 
-            dbm.AddData<PunchData>(
+            Task t1 = dbm.AddData<PunchData>(
                 new PunchData()
                 {
                     TerminalId = "1",
@@ -46,12 +47,20 @@ namespace AggityPresenceControlService
                     Time = DateTime.Now
                 }
             );
+            Task.WaitAll(t1);
 
-            dbm.SynchronizeOfflineData((PunchData p) =>
-            {   
+            Task t2 = dbm.SynchronizeOfflineData(async (PunchData p) =>
+            {
                 //send data to service and check is received. Return true if received, return false elsewhere.
-                return true;
+                //return await Task.FromResult<bool>(true);
+
+                //AggityPresenceControlWSClient.AggityPresenceControlWSClient client = new AggityPresenceControlWSClient.AggityPresenceControlWSClient(Configuration.WEBSERVICE_URL);
+                //return await client.SendPunchData(p);
+
+                var client = new AggityPresenceControlWSAsmxClient.AggityPresenceControlWSAsmxClient(Configuration.WEBSERVICE_URL);
+                return await client.SendPunchData(p);
             });
+            Task.WaitAll(t2);
 
             return;
 
