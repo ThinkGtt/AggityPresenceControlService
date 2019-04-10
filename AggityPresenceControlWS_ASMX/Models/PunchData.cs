@@ -16,7 +16,8 @@ namespace AggityPresenceControlWS_ASMX.Models
 
             get
             {
-                return string.Format($"{Id}-{TerminalId}-{CardUid}-{Time.Ticks}");
+                //return string.Format($"{Id}-{TerminalId}-{CardUid}-{Time.Ticks}");
+                return string.Format($"{Id}-{TerminalId}-{CardUid}-{Time.ToString("s")}");
             }
         }
 
