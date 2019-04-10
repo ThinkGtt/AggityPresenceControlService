@@ -39,36 +39,6 @@ namespace AggityPresenceControlService
         static PCSCLibUID pcsc = null;
         internal static void Start(string[] args)
         {
-            /*
-            DatabaseManager dbm = new DatabaseManager();
-
-            Task t1 = dbm.AddData<PunchData>(
-                new PunchData()
-                {
-                    TerminalId = "1",
-                    CardUid = "1234567890",
-                    Time = DateTime.Now
-                }
-            );
-            Task.WaitAll(t1);
-
-            Task t2 = dbm.SynchronizeOfflineData(async (PunchData p) =>
-            {
-                //send data to service and check is received. Return true if received, return false elsewhere.
-                //return await Task.FromResult<bool>(true);
-
-                //AggityPresenceControlWSClient.AggityPresenceControlWSClient client = new AggityPresenceControlWSClient.AggityPresenceControlWSClient(Configuration.WEBSERVICE_URL);
-                //return await client.SendPunchData(p);
-
-                var client = new AggityPresenceControlWSAsmxClient.AggityPresenceControlWSAsmxClient(Configuration.WEBSERVICE_URL);
-                return await client.SendPunchData(p);
-            });
-            Task.WaitAll(t2);
-
-            return;
-            */
-
-            //
             Task.Run(async () =>
             {
                 while (true)

@@ -25,7 +25,6 @@ namespace AggityPresenceControlWS_ASMX.Database
             {
                 lock (lockObject)
                 {
-                    //CreateTable<PunchData>();
                     var command = CreateCommand(
                         "CREATE TABLE IF NOT EXISTS PunchData (" + 
                             "IdRow        VARCHAR  PRIMARY KEY," +
@@ -45,7 +44,6 @@ namespace AggityPresenceControlWS_ASMX.Database
             {
                 lock (lockObject)
                 {
-                    //PunchData data = Get<PunchData>(punchData.IdRow);
                     PunchData data = Find<PunchData>(punchData.IdRow);
                     if (data != null)
                     {

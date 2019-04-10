@@ -7,7 +7,6 @@ namespace AggityPresenceControlWS_ASMX.Models
 {
     public class PunchData : PunchDataBase, IStorable
     {
-        //[Column("IdRow"), PrimaryKey]
         [PrimaryKey]
         public string IdRow
         {

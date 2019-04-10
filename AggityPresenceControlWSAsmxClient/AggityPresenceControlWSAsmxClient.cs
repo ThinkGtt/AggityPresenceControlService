@@ -10,8 +10,7 @@ namespace AggityPresenceControlWSAsmxClient
 {
     public class AggityPresenceControlWSAsmxClient
     {
-        string BaseUrl { get; set; }
-        //HttpClient Client { get; set;  }
+        string BaseUrl { get; set; }        
 
         public AggityPresenceControlWSAsmxClient(string baseUrl)
         {

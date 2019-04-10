@@ -14,7 +14,6 @@ namespace AggityPresenceControlWSClient
     public class AggityPresenceControlWSClient
     {
         string BaseUrl { get; set; }
-        //HttpClient Client { get; set;  }
 
         public AggityPresenceControlWSClient(string baseUrl)
         {
@@ -23,14 +22,6 @@ namespace AggityPresenceControlWSClient
 
         public async Task<bool> SendPunchData(PunchDataBase punchData)
         {
-            /*
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(BaseUrl);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //HttpResponseMessage response = await client.PostAsync()
-            */
-
             var uri = new Uri(string.Format(BaseUrl, string.Empty));
         
             HttpClient client = new HttpClient();
@@ -41,7 +32,6 @@ namespace AggityPresenceControlWSClient
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = await client.PostAsync(uri, content);
-            //return response.IsSuccessStatusCode;
             return response.StatusCode == HttpStatusCode.OK;
         }
     }

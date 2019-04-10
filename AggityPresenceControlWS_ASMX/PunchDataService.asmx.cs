@@ -18,14 +18,6 @@ namespace AggityPresenceControlWS_ASMX
     // [System.Web.Script.Services.ScriptService]
     public class PunchDataService : System.Web.Services.WebService
     {
-        /*
-        [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hola a todos";
-        }
-        */
-
         [WebMethod]
         public bool SendPunchData(string punchDataBaseJson)
         {
