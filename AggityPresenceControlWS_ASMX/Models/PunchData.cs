@@ -29,10 +29,13 @@ namespace AggityPresenceControlWS_ASMX.Models
             get { return time; }
             set
             {
+                /*
                 if (value != null)
                 {
                     time = value.ToUniversalTime();
                 }
+                */
+                time = value;
             }
         }
         public bool Exported { get; set; } = false;
@@ -41,10 +44,13 @@ namespace AggityPresenceControlWS_ASMX.Models
             get { return exportedTime; }
             set
             {
+                /*
                 if (value != null)
                 {
                     exportedTime = value.ToUniversalTime();
                 }
+                */
+                exportedTime = value;
             }
         }
 

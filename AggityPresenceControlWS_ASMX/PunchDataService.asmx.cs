@@ -26,6 +26,7 @@ namespace AggityPresenceControlWS_ASMX
                 PunchData punchData = JsonConvert.DeserializeObject<PunchData>(punchDataBaseJson);
                 punchData.Exported = false;
                 punchData.ExportedTime = DateTime.MinValue;
+                punchData.Time = punchData.Time.ToLocalTime();
                 return Database.DatabaseManager.InsertDataIfNew(punchData);
             }
             catch (Exception ex)

@@ -75,7 +75,7 @@ namespace AggityPresenceControlService
                                 {
                                     TerminalId = Configuration.TERMINAL_ID,
                                     CardUid = e.UID,
-                                    Time = DateTime.Now
+                                    Time = DateTime.Now.ToUniversalTime()
                                 }
                             );
                         }
