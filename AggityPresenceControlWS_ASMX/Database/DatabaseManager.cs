@@ -1,5 +1,7 @@
 ﻿using AggityPresenceControlWS_ASMX.Models;
 using SQLite;
+using System;
+using System.Collections.Generic;
 
 namespace AggityPresenceControlWS_ASMX.Database
 {
@@ -16,6 +18,24 @@ namespace AggityPresenceControlWS_ASMX.Database
         {
             return DataBase.InsertDataIfNew(punchData);
         }
+
+        public static void SetExportedData(string idRow)
+        {
+            var punchData = DataBase.Find<PunchData>(idRow);
+            if (punchData != null)
+            {
+                punchData.Exported = true;
+                punchData.ExportedTime = DateTime.Now;
+                DataBase.Update(punchData);
+            }
+        }
+
+
+        public static List<PunchData> GetNotExportedPunchData()
+        {
+            return DataBase.Query<PunchData>("SELECT * FROM PunchData WHERE Exported = 0 ORDER BY Time ASC, TerminalId");
+        }
+
 
         class DatabaseConnectionManager : SQLiteConnection
         {

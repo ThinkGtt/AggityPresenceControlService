@@ -35,5 +35,14 @@ namespace AggityPresenceControlWS_ASMX
                 return false;
             }
         }
+
+        [WebMethod]
+        public void ExportPunchData()
+        {
+            Database.DatabaseManager.GetNotExportedPunchData().ForEach(p =>
+            {
+                Database.DatabaseManager.SetExportedData(p.IdRow);
+            });
+        }
     }
 }
