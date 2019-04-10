@@ -10,7 +10,7 @@ namespace AggityPresenceControlService.Database
     public class DatabaseManager : SQLiteConnection
     {
         private object lockObject = new object();
-        SemaphoreSlim sl = new SemaphoreSlim(1);
+        static SemaphoreSlim sl = new SemaphoreSlim(1);
 
         public DatabaseManager() : base(new SQLitePlatformWin32(), Configuration.DATABASE_FILE)
         {
