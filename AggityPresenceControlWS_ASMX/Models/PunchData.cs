@@ -7,9 +7,14 @@ namespace AggityPresenceControlWS_ASMX.Models
 {
     public class PunchData : PunchDataBase, IStorable
     {
-        [Column("IdRow"), PrimaryKey]
+        //[Column("IdRow"), PrimaryKey]
+        [PrimaryKey]
         public string IdRow
         {
+            set
+            {
+            }
+
             get
             {
                 return string.Format($"{Id}-{TerminalId}-{CardUid}-{Time.Ticks}");
