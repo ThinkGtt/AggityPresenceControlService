@@ -114,6 +114,7 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="Database\DatabaseManager.cs" />
     <Compile Include="GTTRestClient\GTTRestClient.cs" />
+    <Compile Include="GTTRestClient\Model\Consequence.cs" />
     <Compile Include="GTTRestClient\Model\GttRestDataBase.cs" />
     <Compile Include="GTTRestClient\Model\PcRaw.cs" />
     <Compile Include="GTTRestClient\Model\RawMarkDateTime.cs" />

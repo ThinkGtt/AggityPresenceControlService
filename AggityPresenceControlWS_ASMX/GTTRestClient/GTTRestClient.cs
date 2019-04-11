@@ -1,4 +1,6 @@
 ﻿using AggityPresenceControlWS_ASMX.GTTRestClient.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -36,6 +38,8 @@ namespace AggityPresenceControlWS_ASMX.GTTRestClient
                 httpResponseMessage.EnsureSuccessStatusCode();
                 HttpContent httpContent = httpResponseMessage.Content;
                 string responseString = await httpContent.ReadAsStringAsync();
+
+                Consequence consequence = JsonConvert.DeserializeObject<Consequence>(responseString);
 
                 Console.WriteLine(responseString);
                 return true;
