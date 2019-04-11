@@ -1,4 +1,6 @@
-﻿using AggityPresenceControlWS_ASMX.Models;
+﻿using AggityPresenceControlWS_ASMX.GTTRestClient.Model;
+using AggityPresenceControlWS_ASMX.Helpers;
+using AggityPresenceControlWS_ASMX.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -39,9 +41,13 @@ namespace AggityPresenceControlWS_ASMX
         [WebMethod]
         public void ExportPunchData()
         {
-            Database.DatabaseManager.GetNotExportedPunchData().ForEach(p =>
+            Database.DatabaseManager.GetNotExportedPunchData().ForEach((p) =>
             {
-                Database.DatabaseManager.SetExportedData(p.IdRow);
+                bool saved = AsyncHelpers.RunSync<bool>(() => GTTRestClient.GTTRestClient.SendPcRaw(new PcRaw(p)));
+                if (saved)
+                {
+                    Database.DatabaseManager.SetExportedData(p.IdRow);
+                }
             });
         }
     }
