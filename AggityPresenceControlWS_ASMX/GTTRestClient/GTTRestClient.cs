@@ -40,9 +40,11 @@ namespace AggityPresenceControlWS_ASMX.GTTRestClient
                 string responseString = await httpContent.ReadAsStringAsync();
 
                 Consequence consequence = JsonConvert.DeserializeObject<Consequence>(responseString);
+                //var cons = consequence?.consequence?.GetChildConsecuences();
+                var doIt = consequence.consequence.GetDoIt();
 
-                Console.WriteLine(responseString);
-                return true;
+                //Console.WriteLine(responseString);
+                return doIt;
             }
             catch(Exception ex)
             {
