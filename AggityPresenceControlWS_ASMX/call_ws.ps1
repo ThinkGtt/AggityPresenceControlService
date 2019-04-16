@@ -1,0 +1,1 @@
+Invoke-WebRequest -Uri http://localhost/AggityPresenceControlWS_ASMX/PunchDataService.asmx/ExportPunchData -Method POST
