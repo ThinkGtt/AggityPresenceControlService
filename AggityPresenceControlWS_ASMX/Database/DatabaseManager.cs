@@ -30,6 +30,10 @@ namespace AggityPresenceControlWS_ASMX.Database
             }
         }
 
+        public static void PurgueOldExportedData()
+        {
+            DataBase.Execute("DELETE FROM PunchData WHERE Exported=1 AND ExportedTime<?", DateTime.Now.AddDays(int.Parse(Configuration.GTT_PURGUE_EXPORTED_MARKS_AFTER_DAYS) * -1).ToString("yyyy-MM-dd"));
+        }
 
         public static List<PunchData> GetNotExportedPunchData()
         {

@@ -49,6 +49,7 @@ namespace AggityPresenceControlWS_ASMX
                     Database.DatabaseManager.SetExportedData(p.IdRow);
                 }
             });
+            Database.DatabaseManager.PurgueOldExportedData();
         }
     }
 }
