@@ -67,10 +67,16 @@ namespace AggityPresenceControlService
 
                     try
                     {
+                        pcsc.DisableBuzzerOnCardDetected(e.ReaderName);
+                        bool resultBeep = pcsc.PlayStatus(e.ReaderName, true);
+                        if (!resultBeep)
+                        {
+                            return;
+                        }
                         await sl.WaitAsync();
                         using (DatabaseManager dbm = new DatabaseManager())
                         {
-                            await dbm.AddData<PunchData>(
+                            bool result = await dbm.AddData<PunchData>(
                                 new PunchData()
                                 {
                                     TerminalId = Configuration.TERMINAL_ID,
@@ -78,6 +84,12 @@ namespace AggityPresenceControlService
                                     Time = DateTime.Now.ToUniversalTime()
                                 }
                             );
+                            /*if(result)
+                            {
+                                pcsc.PlayWithLedsAndBuzzer(e.ReaderName);
+                            }
+                            */
+                            //pcsc.PlayStatus(e.ReaderName, result);
                         }
                     }
                     finally
@@ -87,6 +99,7 @@ namespace AggityPresenceControlService
                 }
                 else
                 {
+                    pcsc.PlayStatus(e.ReaderName, false);
                     Console.WriteLine("Event called. UID is not valid");
                     LogManager.Logger.Info("Event called. UID is not valid");
                 }

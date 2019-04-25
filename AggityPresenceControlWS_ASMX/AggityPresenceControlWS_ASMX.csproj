@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="call_ws.ps1" />
     <None Include="Properties\PublishProfiles\filesystem.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
