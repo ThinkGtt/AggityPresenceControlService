@@ -1,9 +1,11 @@
-﻿using AggityPresenceControlWS_ASMX.GTTRestClient.Model;
+﻿using AggityPresenceControlUtils;
+using AggityPresenceControlWS_ASMX.GTTRestClient.Model;
 using AggityPresenceControlWS_ASMX.Helpers;
 using AggityPresenceControlWS_ASMX.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -20,11 +22,17 @@ namespace AggityPresenceControlWS_ASMX
     // [System.Web.Script.Services.ScriptService]
     public class PunchDataService : System.Web.Services.WebService
     {
+        static string PRESHARED_KEY = ConfigurationManager.AppSettings["PRESHARED_KEY"];
+
         [WebMethod]
-        public bool SendPunchData(string punchDataBaseJson)
+        public bool SendPunchData(string punchDataBaseJson, string hash)
         {
             try
             {
+                if(CryptoUtils.ComputeSha256Hash(punchDataBaseJson, PRESHARED_KEY) != hash)
+                {
+                    return false;
+                }
                 PunchData punchData = JsonConvert.DeserializeObject<PunchData>(punchDataBaseJson);
                 punchData.Exported = false;
                 punchData.ExportedTime = DateTime.MinValue;

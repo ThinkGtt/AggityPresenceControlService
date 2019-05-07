@@ -35,7 +35,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,12 +49,25 @@
   <ItemGroup>
     <Compile Include="AggityPresenceControlWSAsmxClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PunchDataServiceWSProxy.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PunchDataServiceWSProxy\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AggityPresenceControlDataModel\AggityPresenceControlDataModel.csproj">
       <Project>{213aaaae-67e7-4f06-8219-5f5616e50f1e}</Project>
       <Name>AggityPresenceControlDataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AggityPresenceControlUtils\AggityPresenceControlUtils.csproj">
+      <Project>{e415b483-c46b-4ee5-a06b-a932a96d1388}</Project>
+      <Name>AggityPresenceControlUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -62,7 +77,33 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\PunchDataServiceWSProxy\PunchDataService.wsdl" />
+    <None Include="Web References\PunchDataServiceWSProxy\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/AggityPresenceControlWS_ASMX/PunchDataService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PunchDataServiceWSProxy\</RelPath>
+      <UpdateFromURL>http://localhost/AggityPresenceControlWS_ASMX/PunchDataService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AggityPresenceControlWSAsmxClient_PunchDataServiceWSProxy_PunchDataService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\PunchDataServiceWSProxy\PunchDataService.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -135,6 +135,10 @@
       <Project>{213aaaae-67e7-4f06-8219-5f5616e50f1e}</Project>
       <Name>AggityPresenceControlDataModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AggityPresenceControlUtils\AggityPresenceControlUtils.csproj">
+      <Project>{e415b483-c46b-4ee5-a06b-a932a96d1388}</Project>
+      <Name>AggityPresenceControlUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
