@@ -9,7 +9,33 @@ namespace AggityPresenceControlService
 {
     static class Program
     {
+        /*
+        #region Nested classes to support running as service
+        public const string ServiceName = "AggityPresenceControlService";
+
+        public class Service : ServiceBase
+        {
+            public Service()
+            {
+                ServiceName = Program.ServiceName;
+            }
+
+            protected override void OnStart(string[] args)
+            {
+                Program.Start(args);
+            }
+
+            protected override void OnStop()
+            {
+                Program.Stop();
+            }
+        }
+        #endregion
+        */
+
         static SemaphoreSlim sl = new SemaphoreSlim(1);
+        static bool RunningService { get; set; } = true;
+
 
         /// <summary>
         /// Punto de entrada principal para la aplicación.
@@ -41,7 +67,7 @@ namespace AggityPresenceControlService
         {
             Task.Run(async () =>
             {
-                while (true)
+                while (RunningService)
                 {
                     using (DatabaseManager dbm = new DatabaseManager())
                     {
@@ -109,6 +135,8 @@ namespace AggityPresenceControlService
         internal static void Stop()
         {
             // onstop code here
+            RunningService = false;
+            //Thread.Sleep(5000);
             pcsc?.Dispose();
             pcsc = null;
         }
