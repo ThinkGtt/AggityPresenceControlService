@@ -135,6 +135,10 @@
       <Project>{213aaaae-67e7-4f06-8219-5f5616e50f1e}</Project>
       <Name>AggityPresenceControlDataModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\aggitypresencecontrolswaggerclient\src\IO.Swagger\IO.Swagger.csproj">
+      <Project>{ac15df50-8bbd-46e1-a44b-b2e938c436b7}</Project>
+      <Name>IO.Swagger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AggityPresenceControlUtils\AggityPresenceControlUtils.csproj">
       <Project>{e415b483-c46b-4ee5-a06b-a932a96d1388}</Project>
       <Name>AggityPresenceControlUtils</Name>

@@ -15,10 +15,14 @@ namespace AggityPresenceControlWS_ASMX.GTTRestClient
 {
     public class GTTRestClient
     {
+        static string GTT_BASE_PATH = ConfigurationManager.AppSettings["GTT_BASE_PATH"];
+        static string GTT_REST_AUTHORIZATION { get; set; } = ConfigurationManager.AppSettings["GTT_REST_AUTHORIZATION"];
+
         public static async Task<bool> SendPcRaw(PcRaw raw)
         {
             try
             {
+                /*
                 string data = raw.ToJsonString();
                 HttpClient client = new HttpClient
                 {
@@ -41,6 +45,13 @@ namespace AggityPresenceControlWS_ASMX.GTTRestClient
 
                 //Console.WriteLine(responseString);
                 return doIt;
+                */
+                //var dateTime = new DateTime(raw.data.RawMarkDateTime.year, raw.data.RawMarkDateTime.month, raw.data.RawMarkDateTime.dayofMonth, raw.data.RawMarkDateTime.hourOfDay, raw.data.RawMarkDateTime.minute, raw.data.RawMarkDateTime.second, raw.data.RawMarkDateTime.millisecond, DateTimeKind.Local);
+                var dateTime = new DateTime(raw.data.RawMarkDateTime.year, raw.data.RawMarkDateTime.month, raw.data.RawMarkDateTime.dayofMonth, raw.data.RawMarkDateTime.hourOfDay, raw.data.RawMarkDateTime.minute, raw.data.RawMarkDateTime.second, raw.data.RawMarkDateTime.millisecond, DateTimeKind.Utc);
+                var markApi = new IO.Swagger.Api.CardreadermarkApi(GTT_BASE_PATH);
+                markApi.Configuration.AddApiKey("Authorization", GTT_REST_AUTHORIZATION);
+                markApi.Mark(new IO.Swagger.Model.CardReaderUserMarkEvent(raw.data.RawCardCode, dateTime, raw.data.RawTerminal));
+                return true;
             }
             catch(Exception ex)
             {
