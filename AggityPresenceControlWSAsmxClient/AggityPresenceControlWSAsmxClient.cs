@@ -39,7 +39,7 @@ namespace AggityPresenceControlWSAsmxClient
                     var hash = CryptoUtils.ComputeSha256Hash(jsonData, PRESHARED_KEY);
                     return proxy.SendPunchData(jsonData, hash);
                 }
-                catch
+                catch(Exception ex)
                 {
                     return false;
                 }
